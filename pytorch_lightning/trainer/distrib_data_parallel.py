@@ -338,7 +338,7 @@ class TrainerDDPMixin(ABC):
             try:
                 self.num_slurm_tasks = int(os.environ['SLURM_NTASKS'])
                 self.is_slurm_managing_tasks = self.num_slurm_tasks == self.num_requested_gpus
-
+                print(self.num_slurm_tasks, self.num_requested_gpus)
                 # in interactive mode we don't manage tasks
                 job_name = os.environ['SLURM_JOB_NAME']
                 if job_name == 'bash':
