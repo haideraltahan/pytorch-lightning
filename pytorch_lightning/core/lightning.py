@@ -916,7 +916,8 @@ class LightningModule(ABC, DeviceDtypeModuleMixin, GradInformation, ModelIO, Mod
             print('-' * 10)
             print(os.environ['SLURM_NODELIST'])
             print('-' * 10)
-            root_node = os.environ['SLURM_NODELIST'].split(',')[0]
+            root_node = os.environ['SLURM_NODELIST'].split('[')[0] + os.environ['SLURM_NODELIST'].split('[')[1].split('-')[0]
+            print(root_node)
         except Exception:
             root_node = '127.0.0.1'
 
