@@ -1055,7 +1055,7 @@ class Trainer(
         # route to appropriate start method
         # when using multi-node or DDP within a node start each module in a separate process
         if self.use_ddp2:
-            if self.is_slurm_managing_tasks:
+            if True:
                 task = int(os.environ['SLURM_LOCALID'])
 
             # torchelastic or general non_slurm ddp2
