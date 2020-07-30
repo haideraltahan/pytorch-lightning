@@ -1091,6 +1091,7 @@ class Trainer(
                 results = self.accelerator_backend.teardown(model)
 
             elif self.distributed_backend == 'ddp':
+                print(self.is_slurm_managing_tasks)
                 self.set_random_port()
                 results = self.spawn_ddp_children(model)
 
@@ -1408,7 +1409,7 @@ class Trainer(
 
         # run tests
         self.tested_ckpt_path = ckpt_path
-        self.set_random_port(force=True)
+        d(force=True)
         self.testing = True
         os.environ['PL_TESTING_MODE'] = '1'
         self.model = model
